@@ -36,7 +36,7 @@ if(PYTHON_EXECUTABLE)
     unset(PYTHON_VERSION_FULL)
   endif()
 
-  if(NOT ANDROID AND NOT IOS)
+  if(P4A OR NOT ANDROID AND NOT IOS)
     ocv_check_environment_variables(PYTHON_LIBRARY PYTHON_INCLUDE_DIR)
     if(CMAKE_CROSSCOMPILING)
       find_package(PythonLibs ${PYTHON_VERSION_MAJOR_MINOR})
@@ -51,7 +51,7 @@ if(PYTHON_EXECUTABLE)
     endif()
   endif()
 
-  if(NOT ANDROID AND NOT IOS)
+  if(P4A OR NOT ANDROID AND NOT IOS)
     if(CMAKE_HOST_UNIX)
       execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "from distutils.sysconfig import *; print get_python_lib()"
                       RESULT_VARIABLE PYTHON_CVPY_PROCESS
@@ -117,7 +117,7 @@ if(PYTHON_EXECUTABLE)
                         OUTPUT_STRIP_TRAILING_WHITESPACE)
       endif()
     endif()
-  endif(NOT ANDROID AND NOT IOS)
+endif(P4A OR NOT ANDROID AND NOT IOS)
 
   if(BUILD_DOCS)
     find_host_program(SPHINX_BUILD sphinx-build)
