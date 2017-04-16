@@ -168,7 +168,7 @@ std::wstring GetTempFileNameWinRT(std::wstring prefix)
 #endif
 #endif
 
-#ifdef ANDROID
+#ifdef __ANDROID__
 # include <android/log.h>
 #endif
 
