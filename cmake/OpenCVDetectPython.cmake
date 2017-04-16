@@ -78,7 +78,7 @@ if(NOT ${found})
   if(_found)
     set(_version_major_minor "${_version_major}.${_version_minor}")
 
-    if(NOT ANDROID AND NOT APPLE_FRAMEWORK)
+    if(P4A OR NOT ANDROID AND NOT APPLE_FRAMEWORK)
       ocv_check_environment_variables(${library_env} ${include_dir_env})
       if(NOT ${${library_env}} STREQUAL "")
           set(PYTHON_LIBRARY "${${library_env}}")
@@ -129,7 +129,7 @@ if(NOT ${found})
       endif()
     endif()
 
-    if(NOT ANDROID AND NOT IOS)
+    if(P4A OR NOT ANDROID AND NOT IOS)
       if(CMAKE_HOST_UNIX)
         execute_process(COMMAND ${_executable} -c "from distutils.sysconfig import *; print(get_python_lib())"
                         RESULT_VARIABLE _cvpy_process
@@ -198,7 +198,7 @@ if(NOT ${found})
                           OUTPUT_STRIP_TRAILING_WHITESPACE)
         endif()
       endif()
-    endif(NOT ANDROID AND NOT IOS)
+    endif(P4A OR NOT ANDROID AND NOT IOS)
   endif()
 
   # Export return values
