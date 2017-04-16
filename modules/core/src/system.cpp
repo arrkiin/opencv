@@ -161,7 +161,7 @@ std::wstring GetTempFileNameWinRT(std::wstring prefix)
 #include <unistd.h>
 #include <stdio.h>
 #include <sys/types.h>
-#if defined ANDROID
+#if defined __ANDROID__
 #include <sys/sysconf.h>
 #else
 #include <sys/sysctl.h>
