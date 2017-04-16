@@ -502,7 +502,7 @@ string tempfile( const char* suffix )
     fname = temp_file;
 #endif
 # else
-#  ifdef ANDROID
+#  ifdef __ANDROID__
     //char defaultTemplate[] = "/mnt/sdcard/__opencv_temp.XXXXXX";
     char defaultTemplate[] = "/data/local/tmp/__opencv_temp.XXXXXX";
 #  else
@@ -923,7 +923,7 @@ struct Mutex::Impl
     int refcount;
 };
 
-#elif defined __linux__ && !defined ANDROID && !defined __LINUXTHREADS_OLD__
+#elif defined __linux__ && !defined __ANDROID__ && !defined __LINUXTHREADS_OLD__
 
 struct Mutex::Impl
 {
